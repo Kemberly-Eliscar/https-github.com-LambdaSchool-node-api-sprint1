@@ -3,6 +3,7 @@ const ProjectRouter = require("./routers/project");
 const ActionRouter = require("./routers/actions");
 const helmet = require("helmet");
 
+//setting middleware as our server
 const server = express();
 
 const host = "0.0.0.0";

@@ -2,6 +2,7 @@ const express = require("express");
 const db = require("../data/helpers/projectModel");
 
 const router = express.Router();
+
 // GET request for all projects
 router.get("/", (req, res) => {
   db.get(req.params.id)
