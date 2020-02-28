@@ -9,7 +9,7 @@ const server = express();
 const host = "0.0.0.0";
 const port = 7000;
 
-server.use(helmet());
+
 server.use(express.json());
 server.use("/api/projects", ProjectRouter);
 server.use("/api/actions", ActionRouter);
