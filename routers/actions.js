@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
       res.sendStatus(500);
     });
 });
-//GET actionss by ID
+//GET actions by ID
 router.get("/:id", (req, res) => {
   db.get(req.params.id)
     .then(data => {
@@ -44,4 +44,5 @@ router.delete("/:id", (req, res) => {
         .then(removed => res.status(204).json(removed))
         .catch(err => res.status(500).json({error: "not working"}))
 })
+
 module.exports = router;

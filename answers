@@ -1,0 +1,16 @@
+- [ ] Mention two parts of Express that you learned about this week.
+    1. I learned that Express is just pre-written JS code that is a bunch of if/else statements. For example,       "if user asks for 'this', send them back 'that'".
+
+    2. I also learned that Express adds extra functionality to our server like Routing, Middleware support and      a more eloquent API. 
+
+- [ ] Describe Middleware?
+    1. Functions that get request and response, can perform operations on them, and can either move into the        next middleware, or return a response back to the client. 
+
+- [ ] Describe a Resource?
+    1. A resource is an object or data that can communicate with the client of our API. 
+
+- [ ] What can the API return to help clients know if a request was successful?
+    1. An API can return a response, for a successful response a response in the 200's would be appropriate. 
+
+- [ ] How can we partition our application into sub-applications?
+    1. Express Router

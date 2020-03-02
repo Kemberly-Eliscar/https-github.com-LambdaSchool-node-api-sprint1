@@ -3,8 +3,19 @@ const db = require("../data/helpers/projectModel");
 
 const router = express.Router();
 
+const parseId = (req, res, next) => {
+  if(!req.params.id){
+   const error = new Error("id not provided")
+   next(error)
+   return;
+  }
+  req.id = parseInt(req.params.id)
+  next()
+}
+
 // GET request for all projects
 router.get("/", (req, res) => {
+  console.log('hi')
   db.get(req.params.id)
     .then(data => {
       res.json(data);
@@ -15,9 +26,11 @@ router.get("/", (req, res) => {
 });
 
 //GET projects by ID
-router.get("/:id", (req, res) => {
-  db.get(req.params.id)
+router.get("/:id", parseId, (req, res) => {
+  
+  db.get(req.id)
     .then(data => {
+      console.log(data, req.params.id)
       res.json(data);
     })
     .catch(err => {
@@ -26,8 +39,8 @@ router.get("/:id", (req, res) => {
 });
 
 // GET request for actions on specific ID on project
-router.get("/:id/actions", (req, res) => {
-  db.getProjectActions(req.params.id)
+router.get("/:id/actions",parseId, (req, res) => {
+  db.getProjectActions(req.id)
     .then(data => {
       console.log(data);
       res.json(data);
@@ -54,8 +67,8 @@ router.post("/", (req, res) => {
     });
 });
 // PUT request to update a project by id
-router.put("/:id", (req, res) => {
-  db.update(req.params.id, req.body)
+router.put("/:id",parseId, (req, res) => {
+  db.update(req.id, req.body)
     .then(data => {
       console.log(data);
       res.json(data);
@@ -69,8 +82,8 @@ router.put("/:id", (req, res) => {
 });
 
 // DELETE request to delete a project
-router.delete("/:id", (req, res) => {
-  db.remove(req.params.id)
+router.delete("/:id", parseId, (req, res) => {
+  db.remove(req.id)
     .then(data => {
       console.log(data);
       res.status(204).json({
